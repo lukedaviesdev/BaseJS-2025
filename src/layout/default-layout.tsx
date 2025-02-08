@@ -11,7 +11,7 @@ export const DefaultLayout = ({ children, meta }: { children: React.ReactNode; m
         <meta charSet="utf-8" />
         <title>{meta.title}</title>
       </Helmet>
-      <div className="container mx-auto p-8">{children}</div>
+      <div className="container mx-auto p-8 ">{children}</div>
     </HelmetProvider>
   );
 };
