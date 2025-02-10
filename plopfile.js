@@ -5,7 +5,8 @@ export default function (plop) {
       {
         type: 'input',
         name: 'name',
-        message: 'What is the name of your new route? (e.g., "blog", "contact")',
+        message:
+          'What is the name of your new route? (e.g., "blog", "contact")',
         validate: (value) => {
           if (/.+/.test(value)) {
             return true;
