@@ -10,7 +10,10 @@ interface BoxProperties {
   index: number;
 }
 
-const generateBoxProperties = ({ size, color, index }: BoxProperties, isRunning: boolean) => {
+const generateBoxProperties = (
+  { size, color, index }: BoxProperties,
+  isRunning: boolean,
+) => {
   return {
     style: {
       width: size,
@@ -41,10 +44,11 @@ export const MotionDemo = () => {
 
   const handleStart = () => {
     setIsRunning(true);
-    animate('div',
+    animate(
+      'div',
       { rotate: isRunning ? 360 : 0 },
 
-      { ease: 'linear', duration: 1.2 }
+      { ease: 'linear', duration: 1.2 },
     );
   };
 
@@ -56,11 +60,13 @@ export const MotionDemo = () => {
     <div className="flex flex-col items-center gap-8 w-full h-[500px]">
       <div className="grid grid-cols-2 gap-4">
         <Button onClick={handleStart} disabled={isRunning}>
-
-
           Start
         </Button>
-        <Button className="bg-secondary" onClick={handleStop} disabled={!isRunning}>
+        <Button
+          className="bg-secondary"
+          onClick={handleStop}
+          disabled={!isRunning}
+        >
           Stop
         </Button>
       </div>
