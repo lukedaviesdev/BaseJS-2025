@@ -23,6 +23,8 @@ A modern, opinionated React application template with a robust development setup
   - Vite for lightning-fast development
   - Plop for code generation
   - Comprehensive ESLint configuration
+  - Git hooks with Husky and lint-staged
+  - Automated code quality checks on commit
 
 ## 📁 Project Structure
 
@@ -109,6 +111,7 @@ npm run generate
 ```
 
 Then select "page" from the menu and follow the prompts. This will:
+
 1. Create a new page component in `src/pages`
 2. Generate a corresponding route in `src/routes`
 3. Set up the basic TypeScript types and imports
@@ -136,6 +139,7 @@ export const Route = createFileRoute('/example')({
 ```
 
 The generator will automatically:
+
 - Follow project naming conventions
 - Set up proper TypeScript types
 - Add necessary imports
@@ -145,17 +149,22 @@ The generator will automatically:
 ## 💡 Key Components and Features
 
 ### Motion Components
+
 The application includes motion components for smooth animations and transitions, making the UI more dynamic and engaging.
 
 ### Form Handling
+
 React Hook Form is integrated for efficient form management with:
+
 - Form validation
 - Error handling
 - Field management
 - Performance optimization
 
 ### Data Fetching
+
 React Query is used for:
+
 - Server state management
 - Caching
 - Background updates
@@ -163,7 +172,9 @@ React Query is used for:
 - Loading states
 
 ### Markdown Component
+
 A powerful Markdown component that supports:
+
 - GitHub Flavored Markdown (GFM)
 - Syntax highlighting for code blocks
 - Custom styling that matches your theme
@@ -171,6 +182,7 @@ A powerful Markdown component that supports:
 - Accessible content rendering
 
 Example usage:
+
 ```tsx
 import { Markdown } from '@/components/markdown/markdown';
 
@@ -198,6 +210,7 @@ The template uses a comprehensive styling system:
 ## 📦 Project Configuration
 
 The template includes configuration for:
+
 - TypeScript (`tsconfig.json`)
 - ESLint (`.eslintrc.js`)
 - Prettier (`.prettierrc`)
@@ -208,6 +221,7 @@ The template includes configuration for:
 ## 🔧 Customization
 
 The template is designed to be easily customizable. You can:
+
 - Use plop generators to create new components and routes
 - Modify the Tailwind configuration
 - Add or remove ESLint rules
@@ -230,6 +244,7 @@ The template is designed to be easily customizable. You can:
 ## 🧪 Testing
 
 The project includes a comprehensive testing setup using:
+
 - **Vitest** - Fast unit test runner compatible with Vite
 - **React Testing Library** - DOM testing utilities
 - **Jest DOM** - Custom DOM element matchers
@@ -255,6 +270,7 @@ describe('Button', () => {
 ### Testing Utilities
 
 Custom test utilities are provided in `src/test/test-utils.tsx`:
+
 - Custom render function with providers
 - User event setup for interaction testing
 - Common test utilities and matchers
@@ -262,6 +278,7 @@ Custom test utilities are provided in `src/test/test-utils.tsx`:
 ### Best Testing Practices
 
 1. **Component Testing:**
+
    - Test component rendering
    - Test user interactions
    - Test different component states
@@ -269,12 +286,14 @@ Custom test utilities are provided in `src/test/test-utils.tsx`:
    - Test component variants
 
 2. **Test Organization:**
+
    - Co-locate tests with components
    - Use descriptive test names
    - Group related tests with describe blocks
    - Keep tests focused and atomic
 
 3. **Testing Patterns:**
+
    ```tsx
    // Testing variants
    it('renders different variants', () => {
@@ -301,9 +320,82 @@ Custom test utilities are provided in `src/test/test-utils.tsx`:
 ### Visual Testing Interface
 
 The project includes Vitest UI for a better testing experience:
+
 - Interactive test runner
 - Real-time test feedback
 - Component preview
 - Test debugging tools
 
 Run `npm run test:ui` to launch the visual testing interface.
+
+## 🔧 Git Hooks
+
+The project uses Git hooks through Husky and lint-staged to ensure code quality:
+
+### Pre-commit Hook
+
+The following checks run automatically before each commit:
+
+- **Type Checking:**
+  - Full TypeScript type check
+  - Ensures no type errors exist
+- **TypeScript files (.ts, .tsx):**
+  - ESLint for code quality
+  - Prettier for code formatting
+  - Vitest for related test files
+- **Other files (.json, .css, .md):**
+  - Prettier for formatting
+
+This ensures that:
+
+- All code follows the project's style guide
+- Tests pass for modified files
+- Code is properly formatted
+- No type errors exist
+- No linting errors are committed
+
+### Pre-push Hook
+
+The following checks run before pushing to remote:
+
+- **Type Checking:**
+  - Full TypeScript type check
+  - Ensures no type errors exist
+- **Test Suite:**
+  - Runs all tests
+  - Generates coverage report
+  - Fails if any test fails
+  - Fails if coverage thresholds are not met
+
+This ensures that:
+
+- All tests pass before code is pushed
+- Code coverage meets requirements
+- No type errors are pushed
+- Code quality is maintained across the repository
+
+### Available Scripts
+
+- `npm run type-check` - Run TypeScript type checking
+- `npm run test:ci` - Run tests in CI mode with coverage
+
+### Customizing Git Hooks
+
+You can modify the Git hooks configuration in:
+
+- `package.json` - `lint-staged` section for pre-commit actions
+- `.husky/pre-commit` - Pre-commit hook script
+- `.husky/pre-push` - Pre-push hook script
+- Add more hooks in the `.husky` directory as needed
+
+### Skipping Hooks
+
+In case you need to skip the Git hooks (not recommended):
+
+```bash
+# Skip pre-commit hooks
+git commit -m "your message" --no-verify
+
+# Skip pre-push hooks
+git push --no-verify
+```
