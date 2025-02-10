@@ -18,7 +18,6 @@
       "options": {
         "printWidth": 80,
         "bracketSpacing": true,
-        "functionParameterPosition": "multiline",
         "arrowParens": "always",
         "trailingComma": "all"
       }

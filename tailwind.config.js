@@ -24,12 +24,23 @@ export default {
         ],
         heading2: [
           '1.875rem',
-          { lineHeight: '2.25rem', letterSpacing: '-0.02em', fontWeight: '700' },
+          {
+            lineHeight: '2.25rem',
+            letterSpacing: '-0.02em',
+            fontWeight: '700',
+          },
         ],
-        heading3: ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.02em', fontWeight: '600' }],
+        heading3: [
+          '1.5rem',
+          { lineHeight: '2rem', letterSpacing: '-0.02em', fontWeight: '600' },
+        ],
         heading4: [
           '1.25rem',
-          { lineHeight: '1.75rem', letterSpacing: '-0.02em', fontWeight: '600' },
+          {
+            lineHeight: '1.75rem',
+            letterSpacing: '-0.02em',
+            fontWeight: '600',
+          },
         ],
       },
       borderRadius: {
