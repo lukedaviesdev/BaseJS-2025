@@ -46,10 +46,3 @@ jobs:
         VITEST_MIN_THREADS: 1
         # Fail if a test takes too long (default is 5000ms)
         VITEST_TEST_TIMEOUT: 10000
-
-    - name: Upload coverage reports
-      uses: codecov/codecov-action@v4
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage/coverage-final.json
-        fail_ci_if_error: true
