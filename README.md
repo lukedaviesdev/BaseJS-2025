@@ -2,27 +2,62 @@
 
 A modern, opinionated React application template with a robust development setup, designed for building scalable and interactive web applications.
 
+## 📑 Contents
+
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Technology Stack](#️-technology-stack)
+- [Technical Architecture](#-technical-architecture)
+  - [State Management](#state-management)
+- [Getting Started](#-getting-started)
+- [Available Scripts](#-available-scripts)
+- [Project Configuration](#-project-configuration)
+- [Customization](#-customization)
+- [Best Practices](#-best-practices)
+- [Testing](#-testing)
+  - [Test Structure](#test-structure)
+  - [Testing Utilities](#testing-utilities)
+- [API Integration](#-api-integration)
+  - [Error Handling](#error-handling-1)
+  - [Type Generation](#type-generation)
+  - [Request/Response Interceptors](#requestresponse-interceptors)
+- [Custom Hooks](#-custom-hooks)
+  - [State Management Hooks](#state-management-hooks)
+  - [UI Interaction Hooks](#ui-interaction-hooks)
+  - [Event Handling Hooks](#event-handling-hooks)
+- [Utility Functions](#️-utility-functions)
+  - [Array Utilities](#array-utilities)
+  - [String Utilities](#string-utilities)
+  - [Date Utilities](#date-utilities)
+  - [Object Utilities](#object-utilities)
+  - [Storage Utilities](#storage-utilities)
+
 ## 🚀 Features
 
 - **Modern React** (v18) with TypeScript support
-- **TanStack Router** for type-safe routing
-- **Tailwind CSS** with:
-  - Custom theming and dark mode support
-  - Typography plugin for beautiful content styling
-  - Class Variance Authority for component variants
-  - Tailwind Merge for class name merging
+- **Custom React Hooks:**
+  - `useDebounce` - Rate limiting for input handling
+  - `useEventListener` - Type-safe event listener management
+  - `useIntersection` - Intersection Observer API wrapper
+  - `useLocalStorage` - Persistent state management
+  - `useMediaQuery` - Responsive design hooks
+  - `usePrevious` - Previous value tracking
+- **Utility Functions:**
+  - Array manipulation utilities
+  - Date formatting and manipulation
+  - Object utilities
+  - Storage management
+  - String manipulation
 - **UI Components:**
-  - Radix UI primitives for accessible components
-  - Shadcn/UI inspired component system
-  - Custom Markdown component with GitHub Flavored Markdown support
+  - Markdown component with GitHub Flavored Markdown support
+  - Card components for content display
   - Motion components for animations
-- **State Management & Data Fetching:**
-  - React Query for server state management
-  - React Hook Form for form handling
+  - Form components
 - **Development Tools:**
-  - Vite for lightning-fast development
-  - Plop for code generation
+  - Vite for fast development
   - Comprehensive ESLint configuration
+  - Vitest for testing
+  - TypeScript for type safety
 
 ## 📁 Project Structure
 
@@ -30,11 +65,26 @@ A modern, opinionated React application template with a robust development setup
 src/
 ├── assets/        # Static assets (images, fonts, etc.)
 ├── components/    # Reusable UI components
-│   ├── ui/       # Base UI components (buttons, inputs, etc.)
+│   ├── ui/       # Base UI components
 │   ├── markdown/ # Markdown rendering component
 │   ├── motion/   # Animation components
 │   ├── card/     # Card components
+│   ├── forms/    # Form components
 │   └── repo-data/ # Repository data components
+├── hooks/        # Custom React hooks
+│   ├── use-debounce/     # Debounce hook
+│   ├── use-event-listener/  # Event listener hook
+│   ├── use-intersection/    # Intersection observer hook
+│   ├── use-local-storage/  # Local storage hook
+│   ├── use-media-query/    # Media query hook
+│   └── use-previous/       # Previous value hook
+├── utils/        # Utility functions
+│   ├── array/    # Array manipulation utilities
+│   ├── date/     # Date formatting and manipulation
+│   ├── object/   # Object manipulation utilities
+│   ├── storage/  # Storage utilities
+│   └── string/   # String manipulation utilities
+├── test/         # Test utilities and setup
 ├── lib/          # Utility functions and shared logic
 ├── layout/       # Layout components and templates
 ├── pages/        # Page components
@@ -48,25 +98,11 @@ src/
 
 - **Framework:** React 18
 - **Language:** TypeScript
-- **Routing:** TanStack Router
-- **State Management:**
-  - React Query
-  - React Hook Form
-- **Styling:**
-  - Tailwind CSS
-  - Class Variance Authority
-  - Tailwind Merge
-  - Tailwind Animate
-- **UI Components:**
-  - Radix UI primitives
-  - Custom component system
-  - React Markdown with GFM support
-  - Motion for animations
+- **Testing:** Vitest
 - **Development Tools:**
   - Vite (Build tool)
   - ESLint (Linting)
   - Prettier (Code formatting)
-  - Plop (Code generation)
   - TypeScript ESLint (Static type checking)
 
 ## 🚦 Getting Started
@@ -109,6 +145,7 @@ npm run generate
 ```
 
 Then select "page" from the menu and follow the prompts. This will:
+
 1. Create a new page component in `src/pages`
 2. Generate a corresponding route in `src/routes`
 3. Set up the basic TypeScript types and imports
@@ -136,6 +173,7 @@ export const Route = createFileRoute('/example')({
 ```
 
 The generator will automatically:
+
 - Follow project naming conventions
 - Set up proper TypeScript types
 - Add necessary imports
@@ -145,17 +183,22 @@ The generator will automatically:
 ## 💡 Key Components and Features
 
 ### Motion Components
+
 The application includes motion components for smooth animations and transitions, making the UI more dynamic and engaging.
 
 ### Form Handling
+
 React Hook Form is integrated for efficient form management with:
+
 - Form validation
 - Error handling
 - Field management
 - Performance optimization
 
 ### Data Fetching
+
 React Query is used for:
+
 - Server state management
 - Caching
 - Background updates
@@ -163,7 +206,9 @@ React Query is used for:
 - Loading states
 
 ### Markdown Component
+
 A powerful Markdown component that supports:
+
 - GitHub Flavored Markdown (GFM)
 - Syntax highlighting for code blocks
 - Custom styling that matches your theme
@@ -171,6 +216,7 @@ A powerful Markdown component that supports:
 - Accessible content rendering
 
 Example usage:
+
 ```tsx
 import { Markdown } from '@/components/markdown/markdown';
 
@@ -198,6 +244,7 @@ The template uses a comprehensive styling system:
 ## 📦 Project Configuration
 
 The template includes configuration for:
+
 - TypeScript (`tsconfig.json`)
 - ESLint (`.eslintrc.js`)
 - Prettier (`.prettierrc`)
@@ -208,6 +255,7 @@ The template includes configuration for:
 ## 🔧 Customization
 
 The template is designed to be easily customizable. You can:
+
 - Use plop generators to create new components and routes
 - Modify the Tailwind configuration
 - Add or remove ESLint rules
@@ -229,11 +277,11 @@ The template is designed to be easily customizable. You can:
 
 ## 🧪 Testing
 
-The project includes a comprehensive testing setup using:
-- **Vitest** - Fast unit test runner compatible with Vite
-- **React Testing Library** - DOM testing utilities
-- **Jest DOM** - Custom DOM element matchers
-- **User Event** - Advanced user event simulation
+The project uses Vitest for testing with:
+
+- React Testing Library for component testing
+- Co-located test files with components
+- Full test coverage reporting
 
 ### Test Structure
 
@@ -255,6 +303,7 @@ describe('Button', () => {
 ### Testing Utilities
 
 Custom test utilities are provided in `src/test/test-utils.tsx`:
+
 - Custom render function with providers
 - User event setup for interaction testing
 - Common test utilities and matchers
@@ -262,6 +311,7 @@ Custom test utilities are provided in `src/test/test-utils.tsx`:
 ### Best Testing Practices
 
 1. **Component Testing:**
+
    - Test component rendering
    - Test user interactions
    - Test different component states
@@ -269,12 +319,14 @@ Custom test utilities are provided in `src/test/test-utils.tsx`:
    - Test component variants
 
 2. **Test Organization:**
+
    - Co-locate tests with components
    - Use descriptive test names
    - Group related tests with describe blocks
    - Keep tests focused and atomic
 
 3. **Testing Patterns:**
+
    ```tsx
    // Testing variants
    it('renders different variants', () => {
@@ -301,9 +353,207 @@ Custom test utilities are provided in `src/test/test-utils.tsx`:
 ### Visual Testing Interface
 
 The project includes Vitest UI for a better testing experience:
+
 - Interactive test runner
 - Real-time test feedback
 - Component preview
 - Test debugging tools
 
 Run `npm run test:ui` to launch the visual testing interface.
+
+## 🔧 Git Hooks
+
+The project uses Git hooks through Husky and lint-staged to ensure code quality:
+
+### Pre-commit Hook
+
+The following checks run automatically before each commit:
+
+- **Type Checking:**
+  - Full TypeScript type check
+  - Ensures no type errors exist
+- **TypeScript files (.ts, .tsx):**
+  - ESLint for code quality
+  - Prettier for code formatting
+  - Vitest for related test files
+- **Other files (.json, .css, .md):**
+  - Prettier for formatting
+
+This ensures that:
+
+- All code follows the project's style guide
+- Tests pass for modified files
+- Code is properly formatted
+- No type errors exist
+- No linting errors are committed
+
+### Pre-push Hook
+
+The following checks run before pushing to remote:
+
+- **Type Checking:**
+  - Full TypeScript type check
+  - Ensures no type errors exist
+- **Test Suite:**
+  - Runs all tests
+  - Generates coverage report
+  - Fails if any test fails
+  - Fails if coverage thresholds are not met
+
+This ensures that:
+
+- All tests pass before code is pushed
+- Code coverage meets requirements
+- No type errors are pushed
+- Code quality is maintained across the repository
+
+### Available Scripts
+
+- `npm run type-check` - Run TypeScript type checking
+- `npm run test:ci` - Run tests in CI mode with coverage
+
+### Customizing Git Hooks
+
+You can modify the Git hooks configuration in:
+
+- `package.json` - `lint-staged` section for pre-commit actions
+- `.husky/pre-commit` - Pre-commit hook script
+- `.husky/pre-push` - Pre-push hook script
+- Add more hooks in the `.husky` directory as needed
+
+### Skipping Hooks
+
+In case you need to skip the Git hooks (not recommended):
+
+```bash
+# Skip pre-commit hooks
+git commit -m "your message" --no-verify
+
+# Skip pre-push hooks
+git push --no-verify
+```
+
+## 🎣 Custom Hooks
+
+The project includes several custom hooks to handle common use cases:
+
+### State Management Hooks
+
+- **useLocalStorage** - Persistent state with localStorage
+
+  ```tsx
+  const [value, setValue] = useLocalStorage('key', initialValue);
+  ```
+
+- **usePrevious** - Track previous value of a variable
+  ```tsx
+  const previousValue = usePrevious(currentValue);
+  ```
+
+### UI Interaction Hooks
+
+- **useDebounce** - Debounce rapidly changing values
+
+  ```tsx
+  const debouncedValue = useDebounce(value, 500);
+  ```
+
+- **useMediaQuery** - Responsive design hooks
+
+  ```tsx
+  const isLargeScreen = useMediaQuery('(min-width: 1024px)');
+  ```
+
+- **useIntersection** - Intersection Observer hook
+  ```tsx
+  const intersection = useIntersection(elementRef, options);
+  ```
+
+### Event Handling Hooks
+
+- **useEventListener** - Type-safe event listener management
+  ```tsx
+  useEventListener('click', handleClick, element);
+  ```
+
+## 🛠️ Utility Functions
+
+The project includes utility functions organized by category:
+
+### Array Utilities
+
+- Array manipulation utilities for common operations
+- Includes functions for handling arrays efficiently
+
+### String Utilities
+
+- String manipulation and formatting utilities
+- Text processing and transformation functions
+
+### Date Utilities
+
+- Date formatting and manipulation utilities
+- Time-based calculations and conversions
+
+### Object Utilities
+
+- Object manipulation and transformation utilities
+- Deep operations on objects
+
+### Storage Utilities
+
+- Local storage management utilities
+- Storage availability and quota checking
+
+## 🏗 Technical Architecture
+
+### State Management
+
+- **Application State Layers:**
+
+  ```typescript
+  // Server State
+  const { data, error } = useQuery(['key'], fetchData, {
+    staleTime: 60000,
+    cacheTime: 3600000,
+  });
+
+  // UI State
+  const [uiState, dispatch] = useReducer(reducer, initialState);
+
+  // Form State
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues,
+  });
+  ```
+
+- **State Persistence Strategy:**
+  - Local storage for user preferences
+  - Session storage for temporary data
+  - IndexedDB for large datasets
+  - Memory cache for frequent access data
+
+### Performance
+
+- **Resource Loading:**
+
+  ```typescript
+  // Example of optimized image loading
+  const ImageComponent = () => {
+    const imgRef = useRef<HTMLImageElement>(null);
+    const inView = useIntersection(imgRef, {
+      threshold: 0.1,
+      rootMargin: '50px',
+    });
+
+    return (
+      <img
+        ref={imgRef}
+        loading="lazy"
+        decoding="async"
+        {...(inView ? { src: actualSrc } : {})}
+      />
+    );
+  };
+  ```

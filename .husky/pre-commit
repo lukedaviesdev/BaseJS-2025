@@ -1,0 +1,5 @@
+echo "🔍 Running type check..."
+npm run type-check || exit 1
+
+echo "🧹 Running lint-staged..."
+npx lint-staged
