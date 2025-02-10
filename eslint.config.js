@@ -19,6 +19,7 @@ export default [
         ...globals.browser,
         React: true,
         JSX: true,
+        module: true,
       },
       parser: tseslint.parser,
       parserOptions: {

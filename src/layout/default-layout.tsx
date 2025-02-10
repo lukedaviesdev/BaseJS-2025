@@ -4,7 +4,13 @@ interface Meta {
   title: string;
 }
 
-export const DefaultLayout = ({ children, meta }: { children: React.ReactNode; meta: Meta }) => {
+export const DefaultLayout = ({
+  children,
+  meta,
+}: {
+  children: React.ReactNode;
+  meta: Meta;
+}) => {
   return (
     <HelmetProvider>
       <Helmet>
