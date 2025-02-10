@@ -91,6 +91,10 @@ src/
 - `npm run format:check` - Check code formatting
 - `npm run lint:fix` - Fix linting and formatting issues
 - `npm run generate` - Run plop generators for code scaffolding
+- `npm test` - Run tests in watch mode
+- `npm run test:ui` - Run tests with Vitest UI
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run test:watch` - Run tests in watch mode
 
 ## 🏗️ Code Generation
 
@@ -222,3 +226,84 @@ The template is designed to be easily customizable. You can:
 - Form handling with React Hook Form
 - Code generation with Plop
 - Utility-first styling with Tailwind CSS
+
+## 🧪 Testing
+
+The project includes a comprehensive testing setup using:
+- **Vitest** - Fast unit test runner compatible with Vite
+- **React Testing Library** - DOM testing utilities
+- **Jest DOM** - Custom DOM element matchers
+- **User Event** - Advanced user event simulation
+
+### Test Structure
+
+Tests are co-located with their components using the `.test.tsx` extension. The testing setup includes:
+
+```tsx
+// Example test file (button.test.tsx)
+import { render, screen } from '@/test/test-utils';
+import { Button } from './button';
+
+describe('Button', () => {
+  it('renders correctly', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+});
+```
+
+### Testing Utilities
+
+Custom test utilities are provided in `src/test/test-utils.tsx`:
+- Custom render function with providers
+- User event setup for interaction testing
+- Common test utilities and matchers
+
+### Best Testing Practices
+
+1. **Component Testing:**
+   - Test component rendering
+   - Test user interactions
+   - Test different component states
+   - Test accessibility features
+   - Test component variants
+
+2. **Test Organization:**
+   - Co-locate tests with components
+   - Use descriptive test names
+   - Group related tests with describe blocks
+   - Keep tests focused and atomic
+
+3. **Testing Patterns:**
+   ```tsx
+   // Testing variants
+   it('renders different variants', () => {
+     const { rerender } = render(<Button variant="primary" />);
+     expect(screen.getByRole('button')).toHaveClass('bg-primary');
+
+     rerender(<Button variant="secondary" />);
+     expect(screen.getByRole('button')).toHaveClass('bg-secondary');
+   });
+
+   // Testing user interactions
+   it('handles user interactions', async () => {
+     const { user } = render(<Button onClick={mockFn} />);
+     await user.click(screen.getByRole('button'));
+     expect(mockFn).toHaveBeenCalled();
+   });
+   ```
+
+4. **Coverage Requirements:**
+   - Unit tests for all components
+   - Integration tests for complex features
+   - Coverage reports available via `npm run test:coverage`
+
+### Visual Testing Interface
+
+The project includes Vitest UI for a better testing experience:
+- Interactive test runner
+- Real-time test feedback
+- Component preview
+- Test debugging tools
+
+Run `npm run test:ui` to launch the visual testing interface.
