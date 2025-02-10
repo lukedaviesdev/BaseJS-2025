@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as MotionImport } from './routes/motion'
+import { Route as LoginImport } from './routes/login'
 import { Route as DataImport } from './routes/data'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
@@ -21,6 +22,12 @@ import { Route as IndexImport } from './routes/index'
 const MotionRoute = MotionImport.update({
   id: '/motion',
   path: '/motion',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRoute = LoginImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,6 +74,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DataImport
       parentRoute: typeof rootRoute
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
     '/motion': {
       id: '/motion'
       path: '/motion'
@@ -83,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/data': typeof DataRoute
+  '/login': typeof LoginRoute
   '/motion': typeof MotionRoute
 }
 
@@ -90,6 +105,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/data': typeof DataRoute
+  '/login': typeof LoginRoute
   '/motion': typeof MotionRoute
 }
 
@@ -98,15 +114,16 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/data': typeof DataRoute
+  '/login': typeof LoginRoute
   '/motion': typeof MotionRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/data' | '/motion'
+  fullPaths: '/' | '/about' | '/data' | '/login' | '/motion'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/data' | '/motion'
-  id: '__root__' | '/' | '/about' | '/data' | '/motion'
+  to: '/' | '/about' | '/data' | '/login' | '/motion'
+  id: '__root__' | '/' | '/about' | '/data' | '/login' | '/motion'
   fileRoutesById: FileRoutesById
 }
 
@@ -114,6 +131,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   DataRoute: typeof DataRoute
+  LoginRoute: typeof LoginRoute
   MotionRoute: typeof MotionRoute
 }
 
@@ -121,6 +139,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   DataRoute: DataRoute,
+  LoginRoute: LoginRoute,
   MotionRoute: MotionRoute,
 }
 
@@ -137,6 +156,7 @@ export const routeTree = rootRoute
         "/",
         "/about",
         "/data",
+        "/login",
         "/motion"
       ]
     },
@@ -148,6 +168,9 @@ export const routeTree = rootRoute
     },
     "/data": {
       "filePath": "data.tsx"
+    },
+    "/login": {
+      "filePath": "login.tsx"
     },
     "/motion": {
       "filePath": "motion.tsx"

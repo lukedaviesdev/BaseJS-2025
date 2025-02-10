@@ -14,6 +14,7 @@
     "generate": "plop"
   },
   "dependencies": {
+    "@hookform/resolvers": "^4.0.0",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",
@@ -29,8 +30,10 @@
     "react-markdown": "^9.0.3",
     "react-query": "^3.39.3",
     "remark-gfm": "^4.0.0",
+    "sonner": "^1.7.4",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",

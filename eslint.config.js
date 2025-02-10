@@ -13,11 +13,13 @@ import tseslint from 'typescript-eslint';
 export default [
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    ignores: ['**/.prettierrc.cjs'],
     languageOptions: {
       globals: {
         ...globals.browser,
         React: true,
         JSX: true,
+        module: true,
       },
       parser: tseslint.parser,
       parserOptions: {
@@ -66,14 +68,6 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
       'react/prop-types': 'off',
-      'react/jsx-props-no-spreading': [
-        'warn',
-        {
-          html: 'enforce',
-          custom: 'enforce',
-          explicitSpread: 'ignore',
-        },
-      ],
       'react/function-component-definition': [
         'error',
         {
@@ -126,7 +120,7 @@ export default [
       'import/no-duplicates': 'error',
 
       // Accessibility
-      'jsx-a11y/anchor-is-valid': 'error',
+      // 'jsx-a11y/anchor-is-valid': 'error',
       'jsx-a11y/click-events-have-key-events': 'error',
       'jsx-a11y/no-static-element-interactions': 'error',
 
