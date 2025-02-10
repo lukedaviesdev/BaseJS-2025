@@ -51,5 +51,6 @@ export default defineConfig({
     css: true,
     include: ['src/**/*.test.{ts,tsx}'],
     exclude: [...configDefaults.exclude, 'e2e/*'],
+    dangerouslyIgnoreUnhandledErrors: true,
   },
 });

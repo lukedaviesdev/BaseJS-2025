@@ -2,29 +2,62 @@
 
 A modern, opinionated React application template with a robust development setup, designed for building scalable and interactive web applications.
 
+## 📑 Contents
+
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Technology Stack](#️-technology-stack)
+- [Technical Architecture](#-technical-architecture)
+  - [State Management](#state-management)
+- [Getting Started](#-getting-started)
+- [Available Scripts](#-available-scripts)
+- [Project Configuration](#-project-configuration)
+- [Customization](#-customization)
+- [Best Practices](#-best-practices)
+- [Testing](#-testing)
+  - [Test Structure](#test-structure)
+  - [Testing Utilities](#testing-utilities)
+- [API Integration](#-api-integration)
+  - [Error Handling](#error-handling-1)
+  - [Type Generation](#type-generation)
+  - [Request/Response Interceptors](#requestresponse-interceptors)
+- [Custom Hooks](#-custom-hooks)
+  - [State Management Hooks](#state-management-hooks)
+  - [UI Interaction Hooks](#ui-interaction-hooks)
+  - [Event Handling Hooks](#event-handling-hooks)
+- [Utility Functions](#️-utility-functions)
+  - [Array Utilities](#array-utilities)
+  - [String Utilities](#string-utilities)
+  - [Date Utilities](#date-utilities)
+  - [Object Utilities](#object-utilities)
+  - [Storage Utilities](#storage-utilities)
+
 ## 🚀 Features
 
 - **Modern React** (v18) with TypeScript support
-- **TanStack Router** for type-safe routing
-- **Tailwind CSS** with:
-  - Custom theming and dark mode support
-  - Typography plugin for beautiful content styling
-  - Class Variance Authority for component variants
-  - Tailwind Merge for class name merging
+- **Custom React Hooks:**
+  - `useDebounce` - Rate limiting for input handling
+  - `useEventListener` - Type-safe event listener management
+  - `useIntersection` - Intersection Observer API wrapper
+  - `useLocalStorage` - Persistent state management
+  - `useMediaQuery` - Responsive design hooks
+  - `usePrevious` - Previous value tracking
+- **Utility Functions:**
+  - Array manipulation utilities
+  - Date formatting and manipulation
+  - Object utilities
+  - Storage management
+  - String manipulation
 - **UI Components:**
-  - Radix UI primitives for accessible components
-  - Shadcn/UI inspired component system
-  - Custom Markdown component with GitHub Flavored Markdown support
+  - Markdown component with GitHub Flavored Markdown support
+  - Card components for content display
   - Motion components for animations
-- **State Management & Data Fetching:**
-  - React Query for server state management
-  - React Hook Form for form handling
+  - Form components
 - **Development Tools:**
-  - Vite for lightning-fast development
-  - Plop for code generation
+  - Vite for fast development
   - Comprehensive ESLint configuration
-  - Git hooks with Husky and lint-staged
-  - Automated code quality checks on commit
+  - Vitest for testing
+  - TypeScript for type safety
 
 ## 📁 Project Structure
 
@@ -32,11 +65,26 @@ A modern, opinionated React application template with a robust development setup
 src/
 ├── assets/        # Static assets (images, fonts, etc.)
 ├── components/    # Reusable UI components
-│   ├── ui/       # Base UI components (buttons, inputs, etc.)
+│   ├── ui/       # Base UI components
 │   ├── markdown/ # Markdown rendering component
 │   ├── motion/   # Animation components
 │   ├── card/     # Card components
+│   ├── forms/    # Form components
 │   └── repo-data/ # Repository data components
+├── hooks/        # Custom React hooks
+│   ├── use-debounce/     # Debounce hook
+│   ├── use-event-listener/  # Event listener hook
+│   ├── use-intersection/    # Intersection observer hook
+│   ├── use-local-storage/  # Local storage hook
+│   ├── use-media-query/    # Media query hook
+│   └── use-previous/       # Previous value hook
+├── utils/        # Utility functions
+│   ├── array/    # Array manipulation utilities
+│   ├── date/     # Date formatting and manipulation
+│   ├── object/   # Object manipulation utilities
+│   ├── storage/  # Storage utilities
+│   └── string/   # String manipulation utilities
+├── test/         # Test utilities and setup
 ├── lib/          # Utility functions and shared logic
 ├── layout/       # Layout components and templates
 ├── pages/        # Page components
@@ -50,25 +98,11 @@ src/
 
 - **Framework:** React 18
 - **Language:** TypeScript
-- **Routing:** TanStack Router
-- **State Management:**
-  - React Query
-  - React Hook Form
-- **Styling:**
-  - Tailwind CSS
-  - Class Variance Authority
-  - Tailwind Merge
-  - Tailwind Animate
-- **UI Components:**
-  - Radix UI primitives
-  - Custom component system
-  - React Markdown with GFM support
-  - Motion for animations
+- **Testing:** Vitest
 - **Development Tools:**
   - Vite (Build tool)
   - ESLint (Linting)
   - Prettier (Code formatting)
-  - Plop (Code generation)
   - TypeScript ESLint (Static type checking)
 
 ## 🚦 Getting Started
@@ -243,12 +277,11 @@ The template is designed to be easily customizable. You can:
 
 ## 🧪 Testing
 
-The project includes a comprehensive testing setup using:
+The project uses Vitest for testing with:
 
-- **Vitest** - Fast unit test runner compatible with Vite
-- **React Testing Library** - DOM testing utilities
-- **Jest DOM** - Custom DOM element matchers
-- **User Event** - Advanced user event simulation
+- React Testing Library for component testing
+- Co-located test files with components
+- Full test coverage reporting
 
 ### Test Structure
 
@@ -399,3 +432,128 @@ git commit -m "your message" --no-verify
 # Skip pre-push hooks
 git push --no-verify
 ```
+
+## 🎣 Custom Hooks
+
+The project includes several custom hooks to handle common use cases:
+
+### State Management Hooks
+
+- **useLocalStorage** - Persistent state with localStorage
+
+  ```tsx
+  const [value, setValue] = useLocalStorage('key', initialValue);
+  ```
+
+- **usePrevious** - Track previous value of a variable
+  ```tsx
+  const previousValue = usePrevious(currentValue);
+  ```
+
+### UI Interaction Hooks
+
+- **useDebounce** - Debounce rapidly changing values
+
+  ```tsx
+  const debouncedValue = useDebounce(value, 500);
+  ```
+
+- **useMediaQuery** - Responsive design hooks
+
+  ```tsx
+  const isLargeScreen = useMediaQuery('(min-width: 1024px)');
+  ```
+
+- **useIntersection** - Intersection Observer hook
+  ```tsx
+  const intersection = useIntersection(elementRef, options);
+  ```
+
+### Event Handling Hooks
+
+- **useEventListener** - Type-safe event listener management
+  ```tsx
+  useEventListener('click', handleClick, element);
+  ```
+
+## 🛠️ Utility Functions
+
+The project includes utility functions organized by category:
+
+### Array Utilities
+
+- Array manipulation utilities for common operations
+- Includes functions for handling arrays efficiently
+
+### String Utilities
+
+- String manipulation and formatting utilities
+- Text processing and transformation functions
+
+### Date Utilities
+
+- Date formatting and manipulation utilities
+- Time-based calculations and conversions
+
+### Object Utilities
+
+- Object manipulation and transformation utilities
+- Deep operations on objects
+
+### Storage Utilities
+
+- Local storage management utilities
+- Storage availability and quota checking
+
+## 🏗 Technical Architecture
+
+### State Management
+
+- **Application State Layers:**
+
+  ```typescript
+  // Server State
+  const { data, error } = useQuery(['key'], fetchData, {
+    staleTime: 60000,
+    cacheTime: 3600000,
+  });
+
+  // UI State
+  const [uiState, dispatch] = useReducer(reducer, initialState);
+
+  // Form State
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues,
+  });
+  ```
+
+- **State Persistence Strategy:**
+  - Local storage for user preferences
+  - Session storage for temporary data
+  - IndexedDB for large datasets
+  - Memory cache for frequent access data
+
+### Performance
+
+- **Resource Loading:**
+
+  ```typescript
+  // Example of optimized image loading
+  const ImageComponent = () => {
+    const imgRef = useRef<HTMLImageElement>(null);
+    const inView = useIntersection(imgRef, {
+      threshold: 0.1,
+      rootMargin: '50px',
+    });
+
+    return (
+      <img
+        ref={imgRef}
+        loading="lazy"
+        decoding="async"
+        {...(inView ? { src: actualSrc } : {})}
+      />
+    );
+  };
+  ```
