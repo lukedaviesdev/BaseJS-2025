@@ -1,0 +1,27 @@
+module.exports = {
+  semi: true,
+  tabWidth: 2,
+  printWidth: 80,
+  singleQuote: true,
+  trailingComma: 'all',
+  bracketSpacing: true,
+  bracketSameLine: false,
+  arrowParens: 'always',
+  endOfLine: 'lf',
+  singleAttributePerLine: false,
+  quoteProps: 'as-needed',
+  embeddedLanguageFormatting: 'auto',
+  proseWrap: 'preserve',
+  overrides: [
+    {
+      files: '*.{ts,tsx}',
+      options: {
+        printWidth: 80,
+        bracketSpacing: true,
+        functionParameterPosition: 'multiline',
+        arrowParens: 'always',
+        trailingComma: 'all',
+      },
+    },
+  ],
+};
