@@ -2,6 +2,8 @@
 
 A modern, opinionated React application template with a robust development setup, designed for building scalable and interactive web applications.
 
+While there are lots of Nextjs or Remix templates out there, I wanted to build a enterprise level SPA template ready to hit the ground running when inpiration hits. 
+
 ## 📑 Contents
 
 - [Features](#-features)
