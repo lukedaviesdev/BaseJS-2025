@@ -2,7 +2,7 @@
 
 A modern, opinionated React application template with a robust development setup, designed for building scalable and interactive web applications.
 
-While there are lots of Nextjs or Remix templates out there, I wanted to build a enterprise level SPA template ready to hit the ground running when inpiration hits. 
+While there are lots of Nextjs or Remix templates out there, I wanted to build a enterprise level SPA template ready to hit the ground running when inpiration hits.
 
 ## 📑 Contents
 
@@ -100,6 +100,13 @@ src/
 
 - **Framework:** React 18
 - **Language:** TypeScript
+- **UI Components:**
+  - ShadCN - A collection of reusable components built on Radix UI
+  - Motion.js - For smooth animations and transitions
+- **Form Management:**
+  - React Hook Form - For form state management
+  - Zod - For form validation
+  - ShadCN Form Components - Pre-built accessible form elements
 - **Testing:** Vitest
 - **Development Tools:**
   - Vite (Build tool)
@@ -188,15 +195,6 @@ The generator will automatically:
 
 The application includes motion components for smooth animations and transitions, making the UI more dynamic and engaging.
 
-### Form Handling
-
-React Hook Form is integrated for efficient form management with:
-
-- Form validation
-- Error handling
-- Field management
-- Performance optimization
-
 ### Data Fetching
 
 React Query is used for:
@@ -230,6 +228,62 @@ const MyComponent = () => {
 
   return <Markdown content={markdownContent} />;
 };
+```
+
+### Component Library (ShadCN)
+
+The project utilizes ShadCN, a collection of reusable components built on top of Radix UI. These components are:
+- Fully accessible (following WAI-ARIA guidelines)
+- Customizable through Tailwind CSS
+- Type-safe with TypeScript
+- Beautifully designed and responsive
+
+### Form System
+
+The application implements a robust form system combining:
+- ShadCN form components for beautiful, accessible UI elements
+- React Hook Form for efficient form state management
+- Zod for type-safe form validation
+
+Example of a form setup:
+```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+
+const formSchema = z.object({
+  username: z.string().min(2).max(50),
+  email: z.string().email(),
+});
+
+export function DemoForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+  });
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit((data) => console.log(data))}>
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Submit</Button>
+      </form>
+    </Form>
+  );
+}
 ```
 
 ## 💅 Styling System
