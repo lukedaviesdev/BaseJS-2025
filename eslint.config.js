@@ -13,7 +13,26 @@ import tseslint from 'typescript-eslint';
 export default [
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-    ignores: ['**/.prettierrc.cjs'],
+    ignores: [
+      // dependencies
+      'node_modules/**',
+      // testing
+      'coverage/**',
+      // production
+      'dist/**',
+      'build/**',
+      // misc
+      '**/.DS_Store',
+      '**/*.pem',
+      // debug
+      'npm-debug.log*',
+      'yarn-debug.log*',
+      'yarn-error.log*',
+      // Generated files
+      'src/routeTree.gen.ts',
+      // Config files
+      '**/.prettierrc.cjs'
+    ],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -28,7 +47,7 @@ export default [
         ecmaFeatures: {
           jsx: true,
         },
-        project: './tsconfig.eslint.json',
+        project: ['./tsconfig.json', './tsconfig.node.json'],
       },
     },
   },
@@ -55,7 +74,7 @@ export default [
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: './tsconfig.eslint.json',
+          project: ['./tsconfig.json', './tsconfig.node.json'],
         },
         node: true,
       },

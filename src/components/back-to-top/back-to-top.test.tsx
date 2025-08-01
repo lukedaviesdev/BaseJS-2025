@@ -22,7 +22,6 @@ describe('BackToTop', () => {
       dispatchEvent: vi.fn(),
     };
 
-    // @ts-expect-error - window.matchMedia mock doesn't match exact MediaQueryList type
     window.matchMedia = vi.fn((query) => ({
       ...mediaQueryList,
       media: query,
