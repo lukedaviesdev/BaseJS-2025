@@ -52,7 +52,9 @@ describe('Array Utils', () => {
     });
 
     it('should handle empty arrays', () => {
-      expect(groupBy([], (item) => item.toString())).toEqual({});
+      expect(
+        groupBy<{ toString(): string }>([], (item) => item.toString()),
+      ).toEqual({});
     });
   });
 

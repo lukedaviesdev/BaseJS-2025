@@ -9,7 +9,11 @@ export const RepoData = () => {
 
   if (isLoading) return 'Loading...';
 
-  if (error) return 'An error has occurred: ' + error.message;
+  if (error)
+    return (
+      'An error has occurred: ' +
+      (error instanceof Error ? error.message : 'Unknown error')
+    );
 
   return (
     <div>

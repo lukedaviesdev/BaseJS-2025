@@ -51,13 +51,13 @@ describe('useMediaQuery', () => {
       addListener: vi.fn(), // Deprecated
       removeListener: vi.fn(), // Deprecated
       addEventListener: (
-        type: string,
+        _type: string,
         listener: (event: MediaQueryListEvent) => void,
       ) => {
         listeners.add(listener);
       },
       removeEventListener: (
-        type: string,
+        _type: string,
         listener: (event: MediaQueryListEvent) => void,
       ) => {
         listeners.delete(listener);
